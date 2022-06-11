@@ -34,7 +34,6 @@ pipeline {
             }
             steps{
                 sh 'cat /etc/passwd'
-                sh 'echo " Deploy App from NonProd Evn all the way to Prod'
             }
         }
     }
