@@ -10,20 +10,20 @@ pipeline {
             parallel{
                 stage('sub-job-1'){
                     steps{
-                        sh 'uptime'
-                        sh 'ls -lrt'
+                        sh 'df -h'
+                        sh 'free -h'
+                        sh 'lscpu'
+                        echo 'Good Morning'
                     }
                 }
                 stage('sub-job-2'){
                     steps{
-                        sh 'ps -ef'
-                        sh 'free -g'
+                        sh ('chmod +x system_check.sh && ./system_check.sh')
                     }
                 }
                 stage('sub-job-3'){
                     steps{
-                        sh 'df -h'
-                        sh 'lscpu'
+                        sh ('chmod +x system_check.sh && ./system_check.sh')
                     }
                 }
             }
@@ -38,3 +38,4 @@ pipeline {
         }
     }
 }        
+
